@@ -184,16 +184,6 @@ p1<-ggplot()+
   ylab("Rt (from DSI)")+xlab("Date")+scale_x_date(limits = as.Date(c('2020-12-20','2021-08-31')))+ theme(legend.position = "none")
 
 
-dev.off()
-
-sub_plot_labels_a<-data.frame(
-   x=as.Date(2020-12-20)
-  ,y=c(1)
-  ,text=c("a)")
-  
-)
-
-
 df_tot_sub<-subset(df_tot,df_tot$type%in%c("fitted_susc","Homogenoeus"))
 
 
@@ -335,7 +325,7 @@ df_test$type_comix[df_test$type=="Homogenoeus"]<-"Homogenoeus"
 df_test$is_ext_data<-NA
 df_test$is_ext_data[df_test$type=="Hospitalization data"]<-1
 df_test$date_rescaled<-df_test$date
-df_test$date_rescaled[df_test$type %in% c("fitted_susc","Homogenoeus")]   <-df_test$date_rescaled+shift_hosp
+df_test$date_rescaled[df_test$type %in% c("fitted_susc","Homogenoeus")]   <-df_test$date_rescaled[df_test$type %in% c("fitted_susc","Homogenoeus")]+shift_hosp
 
 
 
